@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Vạn Năng Ultra Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-purple: #d81bff;
+            --neon-blue: #00f0ff;
+            --neon-green: #39ff14;
+            --dark-bg: #0a0a0f;
+            --panel-bg: #12121f;
+            --text-dim: #8888aa;
+        }
+
+        body {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: var(--dark-bg);
+            color: #e0e0ff;
+            line-height: 1.7;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at top left, rgba(216, 27, 255, 0.08), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(0, 240, 255, 0.08), transparent 40%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .header-art {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .ascii {
+            color: var(--neon-purple);
+            font-size: 10px;
+            line-height: 12px;
+            text-shadow: 0 0 8px var(--neon-purple), 0 0 16px var(--neon-purple);
+            margin-bottom: 15px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            text-align: center;
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--neon-blue);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            text-shadow: 0 0 6px var(--neon-blue);
+        }
+
+        .panel {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--neon-purple);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 12px rgba(216, 27, 255, 0.25), inset 0 0 8px rgba(216, 27, 255, 0.08);
+        }
+
+        .panel h2 {
+            color: var(--neon-blue);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid rgba(216, 27, 255, 0.25);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(216, 27, 255, 0.1);
+            color: var(--neon-green);
+            text-shadow: 0 0 4px var(--neon-green);
+        }
+
+        tr:hover {
+            background-color: rgba(0, 240, 255, 0.05);
+        }
+
+        .num-col {
+            text-align: center;
+            font-weight: bold;
+            color: var(--neon-purple);
+        }
+
+        .yes {
+            color: var(--neon-green);
+        }
+        .no {
+            color: #ff6b6b;
+        }
+
+        code {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: var(--neon-blue);
+        }
+
+        pre {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 18px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border-left: 3px solid var(--neon-purple);
+            margin: 15px 0;
+        }
+
+        .steps li {
+            margin: 12px 0;
+            list-style: none;
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .steps li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+            text-shadow: 0 0 4px var(--neon-green);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(216, 27, 255, 0.2);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .highlight-box {
+            border: 1px solid var(--neon-green);
+            background-color: rgba(57, 255, 20, 0.05);
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 0 8px rgba(57, 255, 20, 0.15);
+        }
+
+        a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        a:hover {
+            text-shadow: 0 0 8px var(--neon-blue);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-art">
+<pre class="ascii">
+██╗  ██╗███████╗██╗      ██████╗ 
+██║  ██║██╔════╝██║     ██╔═══██╗
+███████║█████╗  ██║     ██║   ██║
+██╔══██║██╔══╝  ██║     ██║   ██║
+██║  ██║███████╗███████╗╚██████╔╝
+╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ 
+       VẠN NĂNG ULTRA PREMIUM
+</pre>
+            <h1>HỆ THỐNG VẠN NĂNG ULTRA PREMIUM</h1>
+            <p class="subtitle">Bộ siêu công cụ quản trị & tối ưu Windows 10/11 — Phong cách Cyberpunk 💜</p>
+        </div>
+
+        <div class="panel">
+            <h2>📌 Thông Tin Dự Án</h2>
+            <p>Bộ công cụ được viết bằng <code>Batch (.bat)</code> kết hợp <code>PowerShell</code>, giao diện màu ANSI, tích hợp đầy đủ các tiện ích tối ưu, dọn rác, kích hoạt bản quyền & sửa lỗi hệ thống.</p>
+            <br>
+            <p><strong>✅ Hỗ trợ:</strong> Windows 10 (1903+) / Windows 11</p>
+            <p><strong>📂 Tác giả:</strong> BeChanDahiro</p>
+        </div>
+
+        <div class="panel">
+            <h2>🎮 11 Tính Năng Chính</h2>
+            <table>
+                <tr>
+                    <th class="num-col">#</th>
+                    <th>Tên Tiện Ích</th>
+                    <th>Chức Năng</th>
+                    <th>Mạng</th>
+                </tr>
+                <tr>
+                    <td class="num-col">1</td>
+                    <td>Mouse Properties</td>
+                    <td>Mở nhanh cài đặt nâng cao chuột & touchpad</td>
+                    <td class="no">❌</td>
+                </tr>
+                <tr>
+                    <td class="num-col">2</td>
+                    <td>GOD MODE</td>
+                    <td>Kích hoạt 200+ công cụ quản trị ẩn của Windows</td>
+                    <td class="no">❌</td>
+                </tr>
+                <tr>
+                    <td class="num-col">3</td>
+                    <td>MAS Script</td>
+                    <td>Kích hoạt bản quyền Windows & Office an toàn</td>
+                    <td class="yes">✅</td>
+                </tr>
+                <tr>
+                    <td class="num-col">4</td>
+                    <td>Active IDM</td>
+                    <td>Kích hoạt Internet Download Manager vĩnh viễn</td>
+                    <td class="yes">✅</td>
+                </tr>
+                <tr>
+                    <td class="num-col">5</td>
+                    <td>WinUtil (CTT)</td>
+                    <td>Tinh chỉnh hệ thống & tối ưu hóa chơi game</td>
+                    <td class="yes">✅</td>
+                </tr>
+                <tr>
+                    <td class="num-col">6</td>
+                    <td>Win Debloat</td>
+                    <td>Gỡ ứng dụng rác, tắt theo dõi, giải phóng RAM/CPU</td>
+                    <td class="yes">✅</td>
+                </tr>
+                <tr>
+                    <td class="num-col">7</td>
+                    <td>Windows Toolbox</td>
+                    <td>Bộ công cụ quản trị mở rộng từ GitHub</td>
+                    <td class="yes">✅</td>
+                </tr>
+                <tr>
+                    <td class="num-col">8</td>
+                    <td>Clear Temp</td>
+                    <td>Quét & xóa tệp tạm, giải phóng hàng chục GB</td>
+                    <td class="no">❌</td>
+                </tr>
+                <tr>
+                    <td class="num-col">9</td>
+                    <td>Shutdown Timer</td>
+                    <td>Hẹn giờ tắt máy tự động — nhập 0 để hủy</td>
+                    <td class="no">❌</td>
+                </tr>
+                <tr>
+                    <td class="num-col">10</td>
+                    <td>SFC Check</td>
+                    <td>Quét & sửa lỗi tệp hệ thống, ngăn màn hình xanh</td>
+                    <td class="no">❌</td>
+                </tr>
+                <tr>
+                    <td class="num-col">11</td>
+                    <td>Thoát An Toàn</td>
+                    <td>Đóng chương trình & dọn dẹp tiến trình</td>
+                    <td class="no">—</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="panel">
+            <h2>🚀 Hướng Dẫn Sử Dụng</h2>
+            <ul class="steps">
+                <li><strong>Bước 1:</strong> Đặt tất cả tệp trong cùng thư mục <code>SystemWindows/</code></li>
+                <li><strong>Bước 2:</strong> Nhấp chuột phải → <code>Main.bat</code> → <strong>Chạy với quyền Quản trị viên</strong></li>
+                <li><strong>Bước 3:</strong> Nhập số tương ứng tính năng → nhấn <strong>Enter</strong></li>
+                <li><strong>Bước 4:</strong> Sau khi xong, chọn <code>11</code> để thoát an toàn</li>
+            </ul>
+
+            <div class="highlight-box">
+                ⚠️ <strong>Lưu ý quan trọng:</strong><br>
+                — Luôn chạy từ tệp <code>Main.bat</code>, không chạy lẻ từng tệp con<br>
+                — Tính năng số 3,4,5,6,7 yêu cầu kết nối Internet<br>
+                — Khi chỉnh sửa & lưu tệp .bat → chọn mã hóa <strong>UTF-8</strong>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>📂 Cấu Trúc Thư Mục</h2>
+<pre>
+SystemWindows/
+ ├── Main.bat              ← ★ Chạy tệp này trước
+ ├── Active_Win_Office.bat
+ ├── Active_IDM.bat
+ ├── Don_Rac.bat
+ ├── GodMode.bat
+ ├── Mouse_Properties.bat
+ ├── Win_Debloat.bat
+ ├── Windows_Toolbox.bat
+ ├── WinUtil_Tool.bat
+ ├── README.md
+ └── index.html            ← Trang chủ này
+</pre>
+        </div>
+
+        <div class="footer">
+            <p>Hệ Thống Vạn Năng Ultra Premium | Phát triển bởi BeChanDahiro 💜</p>
+            <p><a href="https://github.com/BeChanDahiro/SystemWindows" target="_blank">Xem trên GitHub →</a></p>
+        </div>
+    </div>
+</body>
+</html>
