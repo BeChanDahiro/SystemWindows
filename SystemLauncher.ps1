@@ -2,7 +2,7 @@
 .SYNOPSIS
 🚀 Hệ Thống Vạn Năng Ultra Premium — Trình khởi chạy từ GitHub
 🔗 Nguồn: https://github.com/BeChanDahiro/SystemWindows
-📅 Cập nhật: 09/10/2026 — Giữ thư mục để kiểm tra
+📅 Cập nhật: 09/10/2026 — Lưu ra Desktop, không dùng TEMP
 #>
 
 # === Cấu hình ===
@@ -32,14 +32,25 @@ if (-not $IsAdmin) {
     exit
 }
 
-# === Thư mục làm việc ===
-$WorkDir = Join-Path $env:TEMP "SystemWindows_$(Get-Random -Maximum 99999)"
-New-Item -ItemType Directory -Path $WorkDir -Force | Out-Null
-Write-Host "`n📂 Thư mục làm việc: $WorkDir" -ForegroundColor Cyan
-Write-Host "💡 Lưu đường dẫn trên để kiểm tra tệp nha!`n" -ForegroundColor Yellow
+# === LUÔN LƯU RA DESKTOP — KHÔNG DÙNG TEMP NỮA ===
+$DesktopPath = [Environment]::GetFolderPath("Desktop")
+$WorkDir = Join-Path $DesktopPath "SystemWindows"
+
+# === Xóa thư mục cũ nếu có, tạo mới sạch sẽ ===
+if (Test-Path $WorkDir) {
+    Write-Host "📂 Thay the thu muc cu tai Desktop..." -ForegroundColor Yellow
+    try { Remove-Item $WorkDir -Recurse -Force -ErrorAction Stop }
+    catch { Write-Host "⚠️  Khong xoa duoc thu muc cu, dang su dung tiep..." -ForegroundColor Yellow }
+}
+if (-not (Test-Path $WorkDir)) {
+    New-Item -ItemType Directory -Path $WorkDir -Force | Out-Null
+}
+
+Write-Host "`n📂 Thu muc lam viec: $WorkDir" -ForegroundColor Green
+Write-Host "💡 Thu muc NGUYEN VEN tren Desktop, khong bi tu xoa!`n" -ForegroundColor Cyan
 
 # === Tải tất cả tệp ===
-Write-Host "🌐 Đang tải tệp từ GitHub..." -ForegroundColor Cyan
+Write-Host "🌐 Dang tai tep tu GitHub..." -ForegroundColor Cyan
 $BaseUrl = "https://raw.githubusercontent.com/$RepoOwner/$RepoName/$Branch"
 $SuccessCount = 0
 
@@ -54,55 +65,41 @@ foreach ($f in $Files) {
         $SuccessCount++
     }
     catch {
-        Write-Host "   ❌ Lỗi tải $f : $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "   ❌ Loi tai $f : $($_.Exception.Message)" -ForegroundColor Red
     }
 }
 
 # === Kiểm tra đủ tệp chưa ===
 if ($SuccessCount -lt $Files.Count) {
-    Write-Host "`n⚠️  Chỉ tải được $SuccessCount/$($Files.Count) tệp!" -ForegroundColor Yellow
+    Write-Host "`n⚠️  Chi tai duoc $SuccessCount/$($Files.Count) tep!" -ForegroundColor Yellow
 } else {
-    Write-Host "✅ Tải đủ $SuccessCount tệp thành công!" -ForegroundColor Green
+    Write-Host "✅ Tai du $SuccessCount tep thanh cong!" -ForegroundColor Green
 }
 
-# === Mở thư mục ra cho bạn xem luôn nha ===
-Write-Host "`n📂 Đang mở thư mục chứa tệp..." -ForegroundColor Cyan
+# === Mở thư mục ra luôn cho bạn thấy ===
+Write-Host "`n📂 Dang mo thu muc..." -ForegroundColor Cyan
 explorer.exe $WorkDir
 
 # === Kiểm tra Main.bat tồn tại ===
 $MainBat = Join-Path $WorkDir "Main.bat"
 if (-not (Test-Path $MainBat)) {
-    Write-Host "`n❌ LỖI: Không tìm thấy Main.bat!" -ForegroundColor Red
-    Read-Host "Nhấn Enter để thoát"
+    Write-Host "`n❌ LOI: Khong tim thay Main.bat! Kiem tra ket noi mang." -ForegroundColor Red
+    Read-Host "Nhan Enter de thoat"
     exit 1
 }
 
 # === Chạy Main.bat ===
-Write-Host "`n🚀 Khởi chạy Hệ Thống Vạn Năng..." -ForegroundColor Green
-Write-Host "════════════════════════════════════════`n" -ForegroundColor Magenta
+Write-Host "`n🚀 Khoi chay He Thong Van Nang..." -ForegroundColor Green
+Write-Host "========================================`n" -ForegroundColor Magenta
 
 Set-Location $WorkDir
 Start-Process -FilePath "cmd.exe" -ArgumentList "/c .\Main.bat" -WorkingDirectory $WorkDir -Wait -NoNewWindow
 
-# === Đóng rồi — Chờ bạn xác nhận mới xóa ===
-Write-Host "`n════════════════════════════════════════" -ForegroundColor Magenta
-Write-Host "✅ Đã đóng chương trình. Thư mục vẫn còn ở đây: $WorkDir" -ForegroundColor Green
-Write-Host "💡 Bạn có thể mở thư mục trên để xem/chỉnh sửa tệp trước khi xóa" -ForegroundColor Yellow
+# === XONG — KHÔNG XÓA GÌ CẢ ===
+Write-Host "`n========================================" -ForegroundColor Magenta
+Write-Host "✅ Da dong chuong trinh!" -ForegroundColor Green
+Write-Host "💡 Thu muc van o Desktop: $WorkDir" -ForegroundColor Cyan
+Write-Host "💡 Ban co mo lai Main.bat bat cu luc nao!" -ForegroundColor Yellow
+Write-Host "💡 Tu xoa thu muc khi khong can nua nha!" -ForegroundColor Gray
 
-$xoa = Read-Host "`nBạn có muốn XÓA thư mục tạm bây giờ không? (Y = xóa / Bất kỳ = giữ lại)"
-if ($xoa -match "^[Yy]$") {
-    Write-Host "🧹 Đang dọn dẹp..." -ForegroundColor Gray
-    try {
-        Set-Location $env:TEMP
-        Remove-Item $WorkDir -Recurse -Force -ErrorAction Stop
-        Write-Host "✅ Đã xóa! Tạm biệt =33" -ForegroundColor Green
-    }
-    catch {
-        Write-Host "⚠️  Không xóa được (đang mở), thư mục vẫn được giữ lại" -ForegroundColor Yellow
-    }
-} else {
-    Write-Host "💾 Đã GIỮ LẠI thư mục tại: $WorkDir" -ForegroundColor Cyan
-    Write-Host "Bạn có thể xóa thủ công khi không cần nữa nha!" -ForegroundColor Gray
-}
-
-Start-Sleep -Seconds 2
+Start-Sleep -Seconds 3
