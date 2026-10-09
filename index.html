@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hệ Thống Vạn Năng Ultra Premium — Bộ siêu công cụ quản trị & tối ưu Windows 10/11">
     <title>Hệ Thống Vạn Năng Ultra Premium</title>
     <style>
         * {
@@ -15,13 +16,15 @@
             --neon-purple: #d81bff;
             --neon-blue: #00f0ff;
             --neon-green: #39ff14;
+            --neon-yellow: #ffd000;
+            --neon-red: #ff4466;
             --dark-bg: #0a0a0f;
             --panel-bg: #12121f;
             --text-dim: #8888aa;
         }
 
         body {
-            font-family: 'Consolas', 'Monaco', monospace;
+            font-family: 'Consolas', 'Monaco', 'Segoe UI', monospace;
             background-color: var(--dark-bg);
             color: #e0e0ff;
             line-height: 1.7;
@@ -44,8 +47,8 @@
 
         .ascii {
             color: var(--neon-purple);
-            font-size: 10px;
-            line-height: 12px;
+            font-size: 9px;
+            line-height: 11px;
             text-shadow: 0 0 8px var(--neon-purple), 0 0 16px var(--neon-purple);
             margin-bottom: 15px;
             overflow-x: auto;
@@ -64,13 +67,20 @@
             text-align: center;
             color: var(--neon-blue);
             font-size: 1.1rem;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             text-shadow: 0 0 6px var(--neon-blue);
+        }
+
+        .version {
+            text-align: center;
+            color: var(--neon-green);
+            font-size: 0.95rem;
+            margin-bottom: 40px;
         }
 
         .panel {
             background-color: var(--panel-bg);
-            border: 1px solid var(--neon-purple);
+            border: 1px solid rgba(216, 27, 255, 0.35);
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 25px;
@@ -111,13 +121,15 @@
             text-align: center;
             font-weight: bold;
             color: var(--neon-purple);
+            width: 45px;
         }
 
         .yes {
             color: var(--neon-green);
+            text-shadow: 0 0 3px var(--neon-green);
         }
         .no {
-            color: #ff6b6b;
+            color: var(--neon-red);
         }
 
         code {
@@ -125,6 +137,7 @@
             padding: 3px 8px;
             border-radius: 4px;
             color: var(--neon-blue);
+            font-family: 'Consolas', monospace;
         }
 
         pre {
@@ -134,6 +147,10 @@
             overflow-x: auto;
             border-left: 3px solid var(--neon-purple);
             margin: 15px 0;
+        }
+
+        pre.code-command {
+            border-left-color: var(--neon-green);
         }
 
         .steps li {
@@ -161,12 +178,24 @@
         }
 
         .highlight-box {
-            border: 1px solid var(--neon-green);
-            background-color: rgba(57, 255, 20, 0.05);
+            border: 1px solid var(--neon-yellow);
+            background-color: rgba(255, 208, 0, 0.05);
             border-radius: 6px;
             padding: 15px;
             margin: 15px 0;
+            box-shadow: 0 0 8px rgba(255, 208, 0, 0.15);
+        }
+
+        .success-box {
+            border-color: var(--neon-green);
+            background-color: rgba(57, 255, 20, 0.05);
             box-shadow: 0 0 8px rgba(57, 255, 20, 0.15);
+        }
+
+        .danger-box {
+            border-color: var(--neon-red);
+            background-color: rgba(255, 68, 102, 0.05);
+            box-shadow: 0 0 8px rgba(255, 68, 102, 0.15);
         }
 
         a {
@@ -179,6 +208,19 @@
             text-shadow: 0 0 8px var(--neon-blue);
             text-decoration: underline;
         }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .tag.purple { background: rgba(216,27,255,0.15); color: var(--neon-purple); }
+        .tag.blue { background: rgba(0,240,255,0.15); color: var(--neon-blue); }
+        .tag.green { background: rgba(57,255,20,0.15); color: var(--neon-green); }
     </style>
 </head>
 <body>
@@ -195,14 +237,31 @@
 </pre>
             <h1>HỆ THỐNG VẠN NĂNG ULTRA PREMIUM</h1>
             <p class="subtitle">Bộ siêu công cụ quản trị & tối ưu Windows 10/11 — Phong cách Cyberpunk 💜</p>
+            <p class="version">Phiên bản v2.1 | Tác giả: BeChanDahiro</p>
+            <div>
+                <span class="tag purple">Batch Script</span>
+                <span class="tag blue">PowerShell</span>
+                <span class="tag green">Miễn Phí & Mã Nguồn Mở</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>⚡ Chạy Ngay — Không Cần Tải Về</h2>
+            <p>Mở <strong>PowerShell với quyền Quản trị viên</strong>, dán lệnh sau:</p>
+<pre class="code-command">irm https://raw.githubusercontent.com/BeChanDahiro/SystemWindows/main/SystemLauncher.ps1 | iex
+</pre>
+            <div class="success-box">
+                ✅ Tự yêu cầu quyền quản trị ✅ Tự tải tất cả tệp ✅ Tự dọn dẹp sau khi thoát
+            </div>
         </div>
 
         <div class="panel">
             <h2>📌 Thông Tin Dự Án</h2>
             <p>Bộ công cụ được viết bằng <code>Batch (.bat)</code> kết hợp <code>PowerShell</code>, giao diện màu ANSI, tích hợp đầy đủ các tiện ích tối ưu, dọn rác, kích hoạt bản quyền & sửa lỗi hệ thống.</p>
             <br>
-            <p><strong>✅ Hỗ trợ:</strong> Windows 10 (1903+) / Windows 11</p>
-            <p><strong>📂 Tác giả:</strong> BeChanDahiro</p>
+            <p><strong>✅ Hỗ trợ:</strong> Windows 10 (1903+) / Windows 11 (tất cả phiên bản)</p>
+            <p><strong>🔑 Quyền yêu cầu:</strong> Quản trị viên (Administrator)</p>
+            <p><strong>📄 Mã hóa tệp:</strong> UTF-8 (bắt buộc khi chỉnh sửa)</p>
         </div>
 
         <div class="panel">
@@ -229,7 +288,7 @@
                 <tr>
                     <td class="num-col">3</td>
                     <td>MAS Script</td>
-                    <td>Kích hoạt bản quyền Windows & Office an toàn</td>
+                    <td>Kích hoạt bản quyền Windows & Office an toàn từ nguồn mở</td>
                     <td class="yes">✅</td>
                 </tr>
                 <tr>
@@ -241,86 +300,121 @@
                 <tr>
                     <td class="num-col">5</td>
                     <td>WinUtil (CTT)</td>
-                    <td>Tinh chỉnh hệ thống & tối ưu hóa chơi game</td>
+                    <td>Tinh chỉnh hệ thống & tối ưu hóa chơi game — Chris Titus</td>
                     <td class="yes">✅</td>
                 </tr>
                 <tr>
                     <td class="num-col">6</td>
                     <td>Win Debloat</td>
-                    <td>Gỡ ứng dụng rác, tắt theo dõi, giải phóng RAM/CPU</td>
+                    <td>Gỡ ứng dụng rác, tắt theo dõi, giải phóng RAM & CPU</td>
                     <td class="yes">✅</td>
                 </tr>
                 <tr>
                     <td class="num-col">7</td>
                     <td>Windows Toolbox</td>
-                    <td>Bộ công cụ quản trị mở rộng từ GitHub</td>
+                    <td>Bộ công cụ quản trị mở rộng trực tiếp từ GitHub</td>
                     <td class="yes">✅</td>
                 </tr>
                 <tr>
                     <td class="num-col">8</td>
                     <td>Clear Temp</td>
-                    <td>Quét & xóa tệp tạm, giải phóng hàng chục GB</td>
+                    <td>Quét & xóa tệp tạm, giải phóng hàng chục GB dung lượng</td>
                     <td class="no">❌</td>
                 </tr>
                 <tr>
                     <td class="num-col">9</td>
                     <td>Shutdown Timer</td>
-                    <td>Hẹn giờ tắt máy tự động — nhập 0 để hủy</td>
+                    <td>Hẹn giờ tắt máy — nhập <code>0</code> để hủy lệnh</td>
                     <td class="no">❌</td>
                 </tr>
                 <tr>
                     <td class="num-col">10</td>
                     <td>SFC Check</td>
-                    <td>Quét & sửa lỗi tệp hệ thống, ngăn màn hình xanh</td>
+                    <td>DISM + SFC — sửa lỗi tệp hệ thống, ngăn màn hình xanh</td>
                     <td class="no">❌</td>
                 </tr>
                 <tr>
                     <td class="num-col">11</td>
                     <td>Thoát An Toàn</td>
-                    <td>Đóng chương trình & dọn dẹp tiến trình</td>
+                    <td>Đóng chương trình & dọn dẹp tiến trình phụ</td>
                     <td class="no">—</td>
                 </tr>
             </table>
         </div>
 
         <div class="panel">
-            <h2>🚀 Hướng Dẫn Sử Dụng</h2>
+            <h2>📂 Cấu Trúc Thư Mục</h2>
+<pre>
+SystemWindows/
+ ├── index.html                 ← 🌐 Trang chủ này
+ ├── README.md                  ← 📖 Tài liệu hướng dẫn
+ ├── SystemLauncher.ps1         ← ⚡ Trình khởi chạy từ xa
+ ├── Main.bat                   ← ★ CHẠY TỆP NÀY TRƯỚC
+ ├── Active_Win_Office.bat      ← Kích hoạt Windows & Office
+ ├── Active_IDM.bat             ← Kích hoạt IDM
+ ├── Don_Rac.bat                ← Dọn rác hệ thống
+ ├── GodMode.bat                ← Bật GOD MODE
+ ├── Mouse_Properties.bat       ← Cấu hình chuột
+ ├── Win_Debloat.bat            ← Gỡ rác & tối ưu
+ ├── Windows_Toolbox.bat        ← Công cụ mở rộng
+ └── WinUtil_Tool.bat           ← Tối ưu game (CTT)
+</pre>
+        </div>
+
+        <div class="panel">
+            <h2>🚀 Hướng Dẫn Sử Dụng Cục Bộ</h2>
             <ul class="steps">
                 <li><strong>Bước 1:</strong> Đặt tất cả tệp trong cùng thư mục <code>SystemWindows/</code></li>
                 <li><strong>Bước 2:</strong> Nhấp chuột phải → <code>Main.bat</code> → <strong>Chạy với quyền Quản trị viên</strong></li>
                 <li><strong>Bước 3:</strong> Nhập số tương ứng tính năng → nhấn <strong>Enter</strong></li>
-                <li><strong>Bước 4:</strong> Sau khi xong, chọn <code>11</code> để thoát an toàn</li>
+                <li><strong>Bước 4:</strong> Các tệp con tự động quay về Menu sau khi xong</li>
+                <li><strong>Bước 5:</strong> Chọn <code>11</code> để thoát an toàn</li>
             </ul>
 
-            <div class="highlight-box">
+            <div class="highlight-box danger-box">
                 ⚠️ <strong>Lưu ý quan trọng:</strong><br>
-                — Luôn chạy từ tệp <code>Main.bat</code>, không chạy lẻ từng tệp con<br>
+                — Luôn chạy từ <code>Main.bat</code>, KHÔNG chạy lẻ từng tệp con<br>
                 — Tính năng số 3,4,5,6,7 yêu cầu kết nối Internet<br>
-                — Khi chỉnh sửa & lưu tệp .bat → chọn mã hóa <strong>UTF-8</strong>
+                — Khi chỉnh sửa & lưu tệp .bat → chọn mã hóa <strong>UTF-8</strong><br>
+                — Nên tạo <strong>Điểm khôi phục hệ thống</strong> trước khi dùng tính năng số 3,4,6
             </div>
         </div>
 
         <div class="panel">
-            <h2>📂 Cấu Trúc Thư Mục</h2>
-<pre>
-SystemWindows/
- ├── Main.bat              ← ★ Chạy tệp này trước
- ├── Active_Win_Office.bat
- ├── Active_IDM.bat
- ├── Don_Rac.bat
- ├── GodMode.bat
- ├── Mouse_Properties.bat
- ├── Win_Debloat.bat
- ├── Windows_Toolbox.bat
- ├── WinUtil_Tool.bat
- ├── README.md
- └── index.html            ← Trang chủ này
-</pre>
+            <h2>🔧 Khắc Phục Sự Cố Thường Gặp</h2>
+            <table>
+                <tr>
+                    <th>Triệu chứng</th>
+                    <th>Cách sửa</th>
+                </tr>
+                <tr>
+                    <td>Hiện lệnh <code>echo.</code> lặp lại</td>
+                    <td>Đảm bảo 3 dòng đầu <code>Main.bat</code>: <code>@echo off</code> + <code>chcp 65001 >nul</code> + <code>title</code></td>
+                </tr>
+                <tr>
+                    <td>Không hiện màu / ký tự lạ</td>
+                    <td>Lưu tệp với mã hóa <strong>UTF-8</strong>; dùng Windows Terminal</td>
+                </tr>
+                <tr>
+                    <td>Không tự quay về Menu</td>
+                    <td>Cập nhật <code>Main.bat</code> dùng <code>call "tên_file.bat"</code> thay vì <code>start</code></td>
+                </tr>
+                <tr>
+                    <td>Báo lỗi quyền</td>
+                    <td>Nhấp chuột phải → Chạy với quyền quản trị viên</td>
+                </tr>
+            </table>
         </div>
 
         <div class="footer">
             <p>Hệ Thống Vạn Năng Ultra Premium | Phát triển bởi BeChanDahiro 💜</p>
-            <p><a href="https://github.com/BeChanDahiro/SystemWindows" target="_blank">Xem trên GitHub →</a></p>
+            <p>
+                <a href="https://github.com/BeChanDahiro/SystemWindows" target="_blank">Xem trên GitHub</a> ·
+                <a href="https://bechandahiro.github.io/SystemWindows/" target="_blank">Trang chủ</a>
+            </p>
+            <p style="margin-top:10px; font-size:0.8rem;">
+                ⚡ Dự án dành cho mục đích học tập & sử dụng cá nhân — tự chịu trách nhiệm khi áp dụng
+            </p>
         </div>
     </div>
 </body>
